@@ -1,0 +1,49 @@
+.App-login {
+  background-color: var(--main-bg-color);
+  min-height: 100vh;
+}
+.App-login-area {
+  display: grid;
+  position: absolute;
+  text-align: center;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  border: 0.2rem solid var(--main-txt-color);
+  z-index: 10;
+  border-radius: 1rem;
+}
+
+.App-login-error {
+  width: 100%;
+}
+
+.App-login-error-message {
+  color: darkred;
+  background-color: var(--main-error-color);
+  border: 0.2rem dashed darkred;
+  display: inline-grid;
+  width: 100%;
+  grid-template-columns: auto auto;
+  justify-content: start;
+  grid-gap: 1rem;
+  padding: 0.5rem;
+  animation: App-animation-error 4s linear;
+}
+
+.App-login-no-error {
+  color: transparent;
+  border: 0.2rem dashed transparent;
+  padding: 0.5rem;
+}
+
+@keyframes App-animation-error {
+  from {
+    display: none;
+  }
+  to {
+    display: block;
+  }
+}

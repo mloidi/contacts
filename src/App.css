@@ -1,5 +1,12 @@
+:root {
+  --main-bg-color: #465451;
+  --main-txt-color: #61dafb;
+  --main-error-color: #ffb3b3;
+}
+
 .App {
   text-align: center;
+  color: white;
 }
 
 .App-logo {
@@ -9,18 +16,17 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--main-bg-color);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--main-txt-color);
 }
 
 @keyframes App-logo-spin {
@@ -30,4 +36,105 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App-title {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.App-button {
+  font-size: 1rem;
+  color: var(--main-txt-color);
+  background-color: transparent;
+  cursor: pointer;
+  border: 0.1rem solid var(--main-txt-color);
+  padding: 0.5rem;
+  transition: color 0.5s, background-color 0.5s;
+}
+
+.App-button:hover,
+:focus {
+  color: var(--main-bg-color);
+  background-color: var(--main-txt-color);
+  border: 0.1rem solid var(--main-txt-color);
+}
+
+.App-input-text {
+  border: none;
+  border-bottom: 2px solid var(--main-bg-color);
+  text-align: start;
+  padding: 0 0.2rem 0.3rem 0.2rem;
+  font-size: 1rem;
+  margin: 0;
+  background-color: white;
+}
+
+.App-input-text:hover,
+:focus {
+  outline: none;
+  transition: 1s;
+  border-color: var(--main-txt-color);
+  background-color: white;
+}
+
+.App-input-text-error {
+  border-bottom: 2px solid var(--main-error-color);
+}
+
+.App-form-field {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.App-Dropzone-Section {
+  font-size: 3.5rem;
+  color: white;
+  background-color: transparent;
+  vertical-align: middle;
+  width: 5rem;
+  height: 6rem;
+  border-radius: 40%;
+  border: 0.1rem dashed var(--main-txt-color);
+  cursor: pointer;
+}
+
+.App-Dropzone-text {
+  color: var(--main-bg-color);
+  text-align: center;
+}
+
+.App-Dropzone-image {
+  font-size: 3.5rem;
+  margin: auto;
+  color: white;
+  background-color: var(--main-bg-color);
+  vertical-align: middle;
+  width: 5rem;
+  height: 6rem;
+  border-radius: 40%;
+  border: 0.1rem solid var(--main-txt-color);
+}
+
+.App-Dropzone-show {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
+  justify-content: start;
+}
+
+.App-Dropzone-button {
+  font-size: 1rem;
+  color: var(--main-txt-color);
+  background-color: transparent;
+  cursor: pointer;
+  border: 0.1rem solid transparent;
+  padding: 0.5rem;
+  transition: color 0.5s;
+}
+
+.App-Dropzone-button:hover,
+:focus {
+  color: var(--main-bg-color);
 }

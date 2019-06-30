@@ -89,7 +89,10 @@ export const LanguageProvider = ({ children }) => {
     },
     {
       id: 'cancel',
-      values: [{ lang: 'es', value: 'Cancelar' }, { lang: 'en', value: 'Cancel' }]
+      values: [
+        { lang: 'es', value: 'Cancelar' },
+        { lang: 'en', value: 'Cancel' }
+      ]
     },
     {
       id: 'avatar',
@@ -97,23 +100,101 @@ export const LanguageProvider = ({ children }) => {
     },
     {
       id: 'firstName',
-      values: [{ lang: 'es', value: 'Nombre' }, { lang: 'en', value: 'First Name' }]
+      values: [
+        { lang: 'es', value: 'Nombre' },
+        { lang: 'en', value: 'First Name' }
+      ]
     },
     {
       id: 'lastName',
-      values: [{ lang: 'es', value: 'Apellidos' }, { lang: 'en', value: 'Last Name' }]
+      values: [
+        { lang: 'es', value: 'Apellidos' },
+        { lang: 'en', value: 'Last Name' }
+      ]
     },
     {
       id: 'department',
-      values: [{ lang: 'es', value: 'Departamento' }, { lang: 'en', value: 'Department' }]
+      values: [
+        { lang: 'es', value: 'Departamento' },
+        { lang: 'en', value: 'Department' }
+      ]
     },
     {
       id: 'emails',
-      values: [{ lang: 'es', value: 'Correos electronicos' }, { lang: 'en', value: 'Emails' }]
+      values: [
+        { lang: 'es', value: 'Correos electronicos' },
+        { lang: 'en', value: 'Emails' }
+      ]
+    },
+    {
+      id: 'email',
+      values: [
+        { lang: 'es', value: 'Correo electronico' },
+        { lang: 'en', value: 'Email' }
+      ]
+    },
+    {
+      id: 'emailType',
+      values: [
+        { lang: 'es', value: 'Tipo de correo electronico' },
+        { lang: 'en', value: 'Email type' }
+      ]
+    },
+    {
+      id: 'emailRequired',
+      values: [
+        { lang: 'es', value: 'Minimo un correo electronico' },
+        { lang: 'en', value: 'Minimum one email' }
+      ]
+    },
+    {
+      id: 'emailErrorMessage',
+      values: [
+        { lang: 'es', value: 'Minimo un correo electronico' },
+        { lang: 'en', value: 'Minimum one email' }
+      ]
     },
     {
       id: 'phones',
-      values: [{ lang: 'es', value: 'Telefonos' }, { lang: 'en', value: 'Phone numbers' }]
+      values: [
+        { lang: 'es', value: 'Telefonos' },
+        { lang: 'en', value: 'Phone numbers' }
+      ]
+    },
+    {
+      id: 'phone',
+      values: [
+        { lang: 'es', value: 'Telefono' },
+        { lang: 'en', value: 'Phone number' }
+      ]
+    },
+    {
+      id: 'phoneType',
+      values: [
+        { lang: 'es', value: 'Tipo de telefono' },
+        { lang: 'en', value: 'Phone number type' }
+      ]
+    },
+    {
+      id: 'phoneRequired',
+      values: [
+        { lang: 'es', value: 'Minimo un telefono' },
+        { lang: 'en', value: 'Minimum one phone' }
+      ]
+    },
+    {
+      id: 'phoneErrorMessage',
+      values: [
+        { lang: 'es', value: 'Minimo un telefono' },
+        { lang: 'en', value: 'Minimum one phone' }
+      ]
+    },
+    {
+      id: 'contactAdded',
+      values: [
+        { lang: 'es', value: 'añadido como contacto' },
+        { lang: 'en', value: 'contact added' }
+      ]
     },
   ]);
 

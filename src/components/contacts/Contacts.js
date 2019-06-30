@@ -55,8 +55,7 @@ const Contacts = () => {
 
   const addNewContact = newContact => {
     const contactsCopy = [...contacts];
-    const id = contactsCopy.length + 1;
-    newContact.id = id;
+    newContact.id = contactsCopy.length + 1;
     contactsCopy.push(newContact);
     setContacts(contactsCopy);
     setShowNewContact(false);
@@ -75,7 +74,7 @@ const Contacts = () => {
         <React.Fragment>
           <div className="App-contact-options">
             <button
-              className="App-button"
+              className="App-contact-button"
               onClick={() => {
                 setShowNewContact(true);
               }}

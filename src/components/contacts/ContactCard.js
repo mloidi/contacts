@@ -37,7 +37,7 @@ const ContactCard = ({ contact }) => {
       </div>
       <div className="App-contact-card-buttons">
         <button
-          className="App-contact-card-button"
+          className="App-contact-button"
           onClick={() => {
             alert('edit');
           }}
@@ -45,7 +45,7 @@ const ContactCard = ({ contact }) => {
           <Icon icon="faAddressCard" /> {' ' + getText('view')}
         </button>
         <button
-          className="App-contact-card-button"
+          className="App-contact-button"
           onClick={() => {
             alert('edit');
           }}

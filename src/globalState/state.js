@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AuthProvider, LanguageProvider } from '.';
+import { AuthProvider, LanguageProvider, AlertProvider } from '.';
 
 function ProviderComposer({ context, children }) {
   return context.reduceRight(
@@ -11,7 +11,11 @@ function ProviderComposer({ context, children }) {
 
 function ContextProvider({ children }) {
   return (
-    <ProviderComposer context={[<AuthProvider />, <LanguageProvider/>]}>{children}</ProviderComposer>
+    <ProviderComposer
+      context={[<AuthProvider />, <LanguageProvider />, <AlertProvider />]}
+    >
+      {children}
+    </ProviderComposer>
   );
 }
 

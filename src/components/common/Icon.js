@@ -26,6 +26,7 @@ import {
   faImage,
   faTrash,
   faPlus,
+  faMinus,
   faSignInAlt,
   faSignOutAlt,
   faCheckCircle,
@@ -139,6 +140,8 @@ const Icon = props => (
       <FontAwesomeIcon icon={faTrash} />
     ) : props.icon === 'faPlus' ? (
       <FontAwesomeIcon icon={faPlus} />
+    ) : props.icon === 'faMinus' ? (
+      <FontAwesomeIcon icon={faMinus} />
     ) : props.icon === 'faSignInAlt' ? (
       <FontAwesomeIcon icon={faSignInAlt} />
     ) : props.icon === 'faSignOutAlt' ? (

@@ -1,0 +1,89 @@
+.App-alert {
+  display: grid;
+  position: absolute;
+  width: 25%;
+  left: 75%;
+  top: 90%;
+  z-index: 10;
+}
+
+.App-alert-success {
+  color: var(--main-alert-success-color);
+  background-color: var(--main-alert-success-bg-color);
+  border: 0.1rem solid var(--main-alert-success-border-color);
+}
+.App-alert-error {
+  color: var(--main-alert-error-color);
+  background-color: var(--main-alert-error-bg-color);
+  border: 0.1rem solid var(--main-alert-error-border-color);
+}
+.App-alert-warning {
+  color: var(--main-alert-warning-color);
+  background-color: var(--main-alert-warning-bg-color);
+  border: 0.1rem solid var(--main-alert-warning-border-color);
+}
+
+.App-alert-message-row {
+  display: grid;
+  grid-template-columns: 5% auto 5%;
+  margin: 1rem;
+  grid-gap: 1rem;
+}
+
+.App-alert-icon {
+  font-size: 2rem;
+}
+
+.App-alert-buttons {
+  display: inline-grid;
+  grid-template-columns: auto;
+  justify-content: end;
+}
+
+.App-alert-button-success {
+  background-color: transparent;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: var(--main-alert-success-color);
+  border: 0.1rem solid var(--main-alert-success-bg-color);
+  transition: color 0.5s, background-color 0.5s;
+  cursor: pointer;
+}
+.App-alert-button-success:hover,
+.App-alert-button-success:focus {
+  color: var(--main-alert-success-bg-color);
+  background-color: var(--main-alert-success-color);
+  border: 0.1rem solid var(--main-alert-success-color);
+}
+
+.App-alert-button-error {
+  background-color: transparent;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: var(--main-alert-error-color);
+  border: 0.1rem solid var(--main-alert-error-bg-color);
+  transition: color 0.5s, background-color 0.5s;
+  cursor: pointer;
+}
+.App-alert-button-error:hover,
+.App-alert-button-error:focus {
+  color: var(--main-alert-error-bg-color);
+  background-color: var(--main-alert-error-color);
+  border: 0.1rem solid var(--main-alert-error-color);
+}
+
+.App-alert-button-warning {
+  background-color: transparent;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: var(--main-alert-warning-color);
+  border: 0.1rem solid var(--main-alert-warning-bg-color);
+  transition: color 0.5s, background-color 0.5s;
+  cursor: pointer;
+}
+.App-alert-button-warning:hover,
+.App-alert-button-warning:focus {
+  color: var(--main-alert-warning-bg-color);
+  background-color: var(--main-alert-warning-color);
+  border: 0.1rem solid var(--main-alert-warning-color);
+}

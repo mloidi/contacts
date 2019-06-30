@@ -1,0 +1,5 @@
+export const ALERT_TYPE = {
+  SUCCESS: 'SUCCESS',
+  ERROR: 'ERROR',
+  WARNING: 'WARNING'
+};

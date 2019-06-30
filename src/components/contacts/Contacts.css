@@ -18,11 +18,12 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 1rem;
   padding: 1rem;
   cursor: default;
   display: grid;
   grid-template-rows: 85% 15%;
+  color: var(--main-bg-color);
 }
 
 .App-contact-card:hover {
@@ -70,7 +71,7 @@
   grid-template-columns: 50% 50%;
 }
 
-.App-contact-card-button {
+.App-contact-button {
   font-size: 1rem;
   color: var(--main-bg-color);
   background-color: transparent;
@@ -80,28 +81,35 @@
   transition: color 0.5s, background-color 0.5s;
 }
 
-.App-contact-card-button:hover,
-:focus {
+.App-contact-button:hover,
+.App-contact-button:focus {
   color: var(--main-bg-color);
   background-color: var(--main-txt-color);
   border: 0.1rem solid var(--main-txt-color);
 }
 
+.App-contact-button:disabled {
+  color: gray;
+  background-color: darkgray;
+}
+
 .App-contact-new {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: auto;
   grid-gap: 1rem;
   margin-top: 1rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
+  margin-left: 25%;
+  margin-right: 25%;
   padding: 1rem;
-  border: 0.1rem solid var(--main-bg-color);
+  border: 0.1rem solid var(--main-txt-color);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
 }
 
 .App-contact-new-field {
   margin-top: 0.5rem;
   display: grid;
-  grid-template-columns: 6rem auto;
+  grid-template-columns: auto auto;
   justify-content: start;
   grid-gap: 1rem;
 }
@@ -122,26 +130,34 @@
   z-index: 0;
   background-color: white;
   padding-left: 1rem;
-}
-
-.App-contact-new-field-list-label-email {
-  width: 4rem;
-}
-
-.App-contact-new-field-list-label-phone {
-  width: 8rem;
+  width: 2rem;
 }
 
 .App-contact-new-field-list-row {
   display: grid;
-  grid-template-columns: auto auto 5%;
+  grid-template-columns: 45% 45% 5%;
+  grid-gap: 1rem;
+}
+
+.App-contact-new-table-header {
+  display: grid;
+  grid-template-columns: 45% 45% 5%;
+  grid-gap: 1rem;
+  border-bottom: 0.1rem solid var(--main-bg-color);
+  color: gray;
+}
+
+.App-contact-new-table-row {
+  display: grid;
+  grid-template-columns: 45% 45% 5%;
   grid-gap: 1rem;
 }
 
 .App-contact-new-buttons {
   margin-top: 1rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   display: grid;
   grid-template-columns: auto auto;
   justify-content: end;
@@ -159,7 +175,7 @@
 }
 
 .App-contact-new-button:hover,
-:focus {
+.App-contact-new-button:focus {
   color: var(--main-bg-color);
 }
 

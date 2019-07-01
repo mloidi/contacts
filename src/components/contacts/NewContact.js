@@ -1,13 +1,18 @@
 import React, { useContext, useState } from 'react';
 
-import { LanguageContext, AlertContext } from '../../globalState';
+import {
+  LanguageContext,
+  AlertContext,
+  ContactContext
+} from '../../globalState';
 import Icon from '../common/Icon';
 import FileDropzone from '../common/FileDropzone';
 import { ImageService } from '../../service/image.service';
 
-const NewContact = ({ save, cancel }) => {
+const NewContact = () => {
   const { getText } = useContext(LanguageContext);
   const { sendSuccess, sendError } = useContext(AlertContext);
+  const { add, setShowNewContact } = useContext(ContactContext);
 
   const [avatar, setAvatar] = useState(null);
   const [firstName, setFirstName] = useState('');
@@ -296,7 +301,7 @@ const NewContact = ({ save, cancel }) => {
         <button
           className="App-contact-button"
           onClick={() => {
-            cancel();
+            setShowNewContact(false);
           }}
         >
           <Icon icon="faTimes" /> {' ' + getText('cancel')}
@@ -304,7 +309,7 @@ const NewContact = ({ save, cancel }) => {
         <button
           className="App-contact-button"
           onClick={async () => {
-            save({
+            add({
               avatar,
               firstName,
               lastName,

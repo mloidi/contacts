@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 
-import { LanguageContext } from '../../globalState';
+import { LanguageContext, ContactContext } from '../../globalState';
 import Icon from '../common/Icon';
 
 const ContactCard = ({ contact }) => {
   const { getText } = useContext(LanguageContext);
+  const { viewContact } = useContext(ContactContext);
+
   return (
     <div className="App-contact-card">
       <div>
@@ -39,7 +41,7 @@ const ContactCard = ({ contact }) => {
         <button
           className="App-contact-button"
           onClick={() => {
-            alert('edit');
+            viewContact(contact);
           }}
         >
           <Icon icon="faAddressCard" /> {' ' + getText('view')}

@@ -196,6 +196,13 @@ export const LanguageProvider = ({ children }) => {
         { lang: 'en', value: 'contact added' }
       ]
     },
+    {
+      id: 'back',
+      values: [
+        { lang: 'es', value: 'volver' },
+        { lang: 'en', value: 'back' }
+      ]
+    },
   ]);
 
   const getText = id => {

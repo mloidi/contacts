@@ -1,9 +1,9 @@
 .App-alert {
   display: grid;
-  position: absolute;
-  width: 25%;
-  left: 75%;
-  top: 90%;
+  position: fixed;
+  width: 30%;
+  right: 0;
+  bottom: 0;
   z-index: 10;
 }
 

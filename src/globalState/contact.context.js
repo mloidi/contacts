@@ -7,7 +7,7 @@ export const ContactProvider = ({ children }) => {
     return [
       {
         id: 1,
-        avatar: null,
+        avatar: 'https://res.cloudinary.com/mloidi/image/upload/s--HABuvk5u--/v1562087235/contacts/IMG_0014_uvxmfi.jpg',
         firstName: 'AAAA',
         lastName: 'AAAA AAAA',
         department: 'Human Resources',
@@ -67,6 +67,29 @@ export const ContactProvider = ({ children }) => {
     setShowNewContact(false);
   };
 
+  const edit = contactToEdit => {
+    const contactsCopy = [...contacts];
+    setContacts(
+      contactsCopy.map(item => {
+        if (item.id === contactToEdit.id) {
+          item = { ...contactToEdit };
+        }
+        return item;
+      })
+    );
+    setShowEditContact(false);
+  };
+
+  const editContact = contact => {
+    setContact(contact);
+    setShowEditContact(true);
+  };
+
+  const backEditContact = () => {
+    setContact(null);
+    setShowEditContact(false);
+  };
+
   const viewContact = contact => {
     setContact(contact);
     setShowViewContact(true);
@@ -89,8 +112,10 @@ export const ContactProvider = ({ children }) => {
         showViewContact,
         viewContact,
         backViewContact,
+        edit,
         showEditContact,
-        setShowEditContact
+        editContact,
+        backEditContact
       }}
     >
       {children}

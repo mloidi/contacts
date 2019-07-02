@@ -5,7 +5,7 @@ import Icon from '../common/Icon';
 
 const ContactCard = ({ contact }) => {
   const { getText } = useContext(LanguageContext);
-  const { viewContact } = useContext(ContactContext);
+  const { viewContact, editContact } = useContext(ContactContext);
 
   return (
     <div className="App-contact-card">
@@ -49,7 +49,7 @@ const ContactCard = ({ contact }) => {
         <button
           className="App-contact-button"
           onClick={() => {
-            alert('edit');
+            editContact(contact);
           }}
         >
           <Icon icon="faUserEdit" /> {' ' + getText('edit')}

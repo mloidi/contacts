@@ -1,4 +1,4 @@
-import React, {  useContext } from 'react';
+import React, { useContext } from 'react';
 
 import './Contacts.css';
 import { LanguageContext, ContactContext } from '../../globalState';
@@ -9,17 +9,22 @@ import ViewContact from './ViewContact';
 
 const Contacts = () => {
   const { getText } = useContext(LanguageContext);
-  const { contacts,  showNewContact, setShowNewContact, showViewContact } = useContext(
-    ContactContext
-  );
+  const {
+    contacts,
+    showNewContact,
+    setShowNewContact,
+    showViewContact,
+    showEditContact
+  } = useContext(ContactContext);
 
   return (
     <React.Fragment>
       {showNewContact ? (
         <NewContact />
-      ) : (
-      showViewContact ? (
-        <ViewContact/>
+      ) : showViewContact ? (
+        <ViewContact />
+      ) : showEditContact ? (
+        <NewContact />
       ) : (
         <React.Fragment>
           <div className="App-contact-options">
@@ -39,7 +44,7 @@ const Contacts = () => {
               ))}
           </div>
         </React.Fragment>
-      ))}
+      )}
     </React.Fragment>
   );
 };

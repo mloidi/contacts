@@ -18,7 +18,13 @@ const FileDropzone = ({ avatar, uploadFile }) => {
       const blob = await res.blob();
       const blobA = [blobToFile(blob, avatar)];
       if (files.length === 0) {
-        setFiles(blobA);
+        setFiles(
+          blobA.map(file =>
+            Object.assign(file, {
+              preview: URL.createObjectURL(file)
+            })
+          )
+        );
         setIsImage(true);
       }
     });
@@ -84,7 +90,11 @@ const FileDropzone = ({ avatar, uploadFile }) => {
           <aside>{thumbs}</aside>
           <button
             className="App-Dropzone-button"
-            onClick={() => setIsImage(false)}
+            onClick={() => {
+              uploadFile(null);
+              setIsImage(false);
+              setFiles([]);
+            }}
             fontSize="1.5rem"
           >
             <Icon icon="faTimes" />

@@ -12,17 +12,21 @@ import { ImageService } from '../../service/image.service';
 const NewContact = () => {
   const { getText } = useContext(LanguageContext);
   const { sendSuccess, sendError } = useContext(AlertContext);
-  const { add, setShowNewContact } = useContext(ContactContext);
+  const { add, setShowNewContact, edit, contact, backEditContact } = useContext(
+    ContactContext
+  );
 
-  const [avatar, setAvatar] = useState(null);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [department, setDepartment] = useState('');
-  const [emails, setEmails] = useState([]);
+  const [avatar, setAvatar] = useState(contact ? contact.avatar : null);
+  const [firstName, setFirstName] = useState(contact ? contact.firstName : '');
+  const [lastName, setLastName] = useState(contact ? contact.lastName : '');
+  const [department, setDepartment] = useState(
+    contact ? contact.department : ''
+  );
+  const [emails, setEmails] = useState(contact ? contact.emails : []);
   const [email, setEmail] = useState('');
   const [emailType, setEmailType] = useState('');
   const [emailError, setEmailError] = useState(false);
-  const [phones, setPhones] = useState([]);
+  const [phones, setPhones] = useState(contact ? contact.phones : []);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [phoneType, setPhoneType] = useState('');
   const [phoneError, setPhoneError] = useState(false);
@@ -55,8 +59,10 @@ const NewContact = () => {
   };
 
   const uploadFile = async file => {
-    const response = await ImageService.uploadFile(file);
-    setAvatar(await response);
+    if (file) {
+      const response = await ImageService.uploadFile(file);
+      setAvatar(await response);
+    } else setAvatar(null);
   };
 
   const validatePhone = phoneToValidate => {
@@ -301,7 +307,11 @@ const NewContact = () => {
         <button
           className="App-contact-button"
           onClick={() => {
-            setShowNewContact(false);
+            if (contact) {
+              backEditContact();
+            } else {
+              setShowNewContact(false);
+            }
           }}
         >
           <Icon icon="faTimes" /> {' ' + getText('cancel')}
@@ -309,17 +319,32 @@ const NewContact = () => {
         <button
           className="App-contact-button"
           onClick={async () => {
-            add({
-              avatar,
-              firstName,
-              lastName,
-              department,
-              emails,
-              phones
-            });
-            sendSuccess(
-              firstName + ' ' + lastName + ' ' + getText('contactAdded')
-            );
+            if (contact) {
+              edit({
+                id: contact.id,
+                avatar,
+                firstName,
+                lastName,
+                department,
+                emails,
+                phones
+              });
+              sendSuccess(
+                firstName + ' ' + lastName + ' ' + getText('contactEdited')
+              );
+            } else {
+              add({
+                avatar,
+                firstName,
+                lastName,
+                department,
+                emails,
+                phones
+              });
+              sendSuccess(
+                firstName + ' ' + lastName + ' ' + getText('contactAdded')
+              );
+            }
           }}
           disabled={disabledSaveButton()}
         >

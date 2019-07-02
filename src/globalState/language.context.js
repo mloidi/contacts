@@ -197,6 +197,13 @@ export const LanguageProvider = ({ children }) => {
       ]
     },
     {
+      id: 'contactEdited',
+      values: [
+        { lang: 'es', value: 'contacto editado' },
+        { lang: 'en', value: 'contact edited' }
+      ]
+    },
+    {
       id: 'back',
       values: [
         { lang: 'es', value: 'volver' },

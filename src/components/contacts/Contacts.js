@@ -40,7 +40,10 @@ const Contacts = () => {
           <div className="App-contact">
             {contacts &&
               contacts.map(contact => (
-                <ContactCard key={contact.id} contact={contact} />
+                <ContactCard
+                  key={contact._id ? contact._id : contact.id}
+                  contact={contact}
+                />
               ))}
           </div>
         </React.Fragment>

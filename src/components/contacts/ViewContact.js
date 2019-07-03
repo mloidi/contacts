@@ -38,7 +38,7 @@ const ViewContact = () => {
         </div>
         {contact.emails.map(item => (
           <div key={item.id} className="App-contact-view-table-row ">
-            <div>{item.type}</div>
+            <div>{item.emailType}</div>
             <div>
               <a
                 className="App-contact-card-email"
@@ -62,7 +62,7 @@ const ViewContact = () => {
         </div>
         {contact.phones.map(item => (
           <div key={item.id} className="App-contact-view-table-row ">
-            <div>{item.type}</div>
+            <div>{item.phoneType}</div>
             <div>{item.phoneNumber}</div>
           </div>
         ))}

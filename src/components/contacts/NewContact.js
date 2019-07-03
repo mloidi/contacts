@@ -165,7 +165,7 @@ const NewContact = () => {
         </div>
         {emails.map(item => (
           <div key={item.id} className="App-contact-new-table-row ">
-            <div>{item.type}</div>
+            <div>{item.emailType}</div>
             <div>{item.email}</div>
             <button
               className="App-contact-new-button"
@@ -212,7 +212,7 @@ const NewContact = () => {
                   emailsCopy.length === 0
                     ? 1
                     : emailsCopy[emailsCopy.length - 1].id + 1;
-                emailsCopy.push({ id, type: emailType, email });
+                emailsCopy.push({ id, emailType, email });
                 setEmail('');
                 setEmailType('');
                 setEmails(emailsCopy);
@@ -241,7 +241,7 @@ const NewContact = () => {
         </div>
         {phones.map(item => (
           <div key={item.id} className="App-contact-new-table-row ">
-            <div>{item.type}</div>
+            <div>{item.phoneType}</div>
             <div>{item.phoneNumber}</div>
             <button
               className="App-contact-new-button"
@@ -288,7 +288,7 @@ const NewContact = () => {
                   phonesCopy.length === 0
                     ? 1
                     : phonesCopy[phonesCopy.length - 1].id + 1;
-                phonesCopy.push({ id, type: phoneType, phoneNumber });
+                phonesCopy.push({ id, phoneType, phoneNumber });
                 setPhoneNumber('');
                 setPhoneType('');
                 setPhones(phonesCopy);

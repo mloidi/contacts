@@ -27,6 +27,12 @@ export const ContactProvider = ({ children }) => {
     });
   };
 
+  const load = () => {
+    ContactService.get().then(response => {
+      setContacts(response);
+    });
+  };
+
   const add = async contactToAdd => {
     const contactsCopy = [...contacts];
     contactToAdd.id = contactsCopy.length + 1;
@@ -74,6 +80,8 @@ export const ContactProvider = ({ children }) => {
     <ContactContext.Provider
       value={{
         contacts,
+        setContacts,
+        load,
         contact,
         getById,
         add,

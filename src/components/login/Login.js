@@ -1,13 +1,18 @@
 import React, { useContext, useState } from 'react';
 
 import './Login.css';
-import { AuthContext, LanguageContext } from '../../globalState';
+import {
+  AuthContext,
+  LanguageContext,
+  ContactContext
+} from '../../globalState';
 import Icon from '../common/Icon';
 
 const Login = () => {
   const { logIn, isUsernameValid, isPasswordValid, message } = useContext(
     AuthContext
   );
+  const { load } = useContext(ContactContext);
   const { getText } = useContext(LanguageContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -63,6 +68,7 @@ const Login = () => {
             className="App-button"
             onClick={() => {
               logIn(username, password);
+              load();
             }}
             disabled={!(username && password)}
           >

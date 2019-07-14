@@ -2,11 +2,16 @@ import React, { useContext } from 'react';
 import { NavLink as Link } from 'react-router-dom';
 
 import './Menu.css';
-import { AuthContext, LanguageContext } from '../../globalState';
+import {
+  AuthContext,
+  LanguageContext,
+  ContactContext
+} from '../../globalState';
 import Icon from '../common/Icon';
 
 const Menu = () => {
   const { logOut, user } = useContext(AuthContext);
+  const { setContacts } = useContext(ContactContext);
   const { languageOption, setLanguageOption, getText } = useContext(
     LanguageContext
   );
@@ -77,7 +82,13 @@ const Menu = () => {
             </div>
           ))}
         <img className="App-menu-avatar" src={user.image} alt={user.userName} />
-        <button className="App-menu-button" onClick={() => logOut()}>
+        <button
+          className="App-menu-button"
+          onClick={() => {
+            logOut();
+            setContacts();
+          }}
+        >
           <Icon icon="faSignOutAlt" />
           {' ' + getText('logout')}
         </button>

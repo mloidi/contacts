@@ -44,7 +44,9 @@ export function AuthProvider({ children }) {
         localStorage.setItem(cookieName, response.token);
         console.log('token saved');
         setToken(response.token);
+        console.log('token set');
         setUser(response.user);
+        console.log('user set');
         setMessage();
         setIsPasswordValid(true);
         setIsUsernameValid(true);

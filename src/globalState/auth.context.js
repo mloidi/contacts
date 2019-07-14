@@ -2,7 +2,8 @@ import React, { createContext, useState, useEffect } from 'react';
 
 import { AuthService } from '../service/auth.service';
 
-export const cookieName = process.env.REACT_APP_NAME + process.env.REACT_APP_TOKEN;
+export const cookieName =
+  process.env.REACT_APP_NAME + process.env.REACT_APP_TOKEN;
 
 export const AuthContext = createContext();
 
@@ -40,12 +41,13 @@ export function AuthProvider({ children }) {
   const logIn = (username, password) => {
     AuthService.login(username, password)
       .then(response => {
+        localStorage.setItem(cookieName, response.token);
+        console.log('token saved');
         setToken(response.token);
         setUser(response.user);
         setMessage();
         setIsPasswordValid(true);
         setIsUsernameValid(true);
-        localStorage.setItem(cookieName, response.token);
       })
       .catch(error => {
         setMessage(error.message);

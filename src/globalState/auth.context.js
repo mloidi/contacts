@@ -43,6 +43,7 @@ export function AuthProvider({ children }) {
       .then(response => {
         localStorage.setItem(cookieName, response.token);
         console.log('token saved');
+        console.log(response);
         setToken(response.token);
         console.log('token set');
         setUser(response.user);

@@ -18,7 +18,7 @@ function App() {
         {authContext =>
           authContext.isAuthenticated() ? (
             <React.Fragment>
-              {authContext.user ? (
+              {authContext.user && (
                 <Router>
                   <Menu />
                   <Switch>
@@ -27,8 +27,6 @@ function App() {
                     <Route component={NotFound} />
                   </Switch>
                 </Router>
-              ) : (
-                <div>no user</div>
               )}
             </React.Fragment>
           ) : (

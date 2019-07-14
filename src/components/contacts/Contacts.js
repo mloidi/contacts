@@ -16,12 +16,15 @@ const Contacts = () => {
   const { getText } = useContext(LanguageContext);
   const {
     contacts,
+    load,
     showNewContact,
     setShowNewContact,
     showViewContact,
     showEditContact
   } = useContext(ContactContext);
-
+  if (isAuthenticated() && !contacts) {
+    load();
+  }
   return (
     <React.Fragment>
       {isAuthenticated() ? (

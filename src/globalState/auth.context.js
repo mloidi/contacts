@@ -38,31 +38,30 @@ export function AuthProvider({ children }) {
     setUser();
   };
 
-  const logIn = (username, password) => {
-    AuthService.login(username, password)
-      .then(response => {
-        localStorage.setItem(cookieName, response.token);
-        console.log('token saved');
-        console.log(response);
-        setToken(response.token);
-        console.log('token set');
-        setUser(response.user);
-        console.log('user set');
+  const logIn = async (username, password) => {
+    try {
+      const { token, user } = await AuthService.login(username, password);
+      if (token && user) {
+        localStorage.setItem(cookieName, token);
+        setToken(token);
+        setUser(user);
         setMessage();
         setIsPasswordValid(true);
         setIsUsernameValid(true);
-      })
-      .catch(error => {
-        setMessage(error.message);
-        if (error.message === 'No account found') {
-          setIsUsernameValid(false);
-          setIsPasswordValid(true);
-        }
-        if (error.message === 'Password is incorrect') {
-          setIsUsernameValid(true);
-          setIsPasswordValid(false);
-        }
-      });
+        return true;
+      }
+    } catch (error) {
+      setMessage(error.message);
+      if (error.message === 'No account found') {
+        setIsUsernameValid(false);
+        setIsPasswordValid(true);
+      }
+      if (error.message === 'Password is incorrect') {
+        setIsUsernameValid(true);
+        setIsPasswordValid(false);
+      }
+    }
+    return false;
   };
 
   return (

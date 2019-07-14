@@ -21,14 +21,10 @@ const Contacts = () => {
     showViewContact,
     showEditContact
   } = useContext(ContactContext);
-  if (isAuthenticated) {
-    console.log(contacts);
-  } else {
-    console.log('No token');
-  }
+
   return (
     <React.Fragment>
-      {isAuthenticated ? (
+      {isAuthenticated() ? (
         <React.Fragment>
           {showNewContact ? (
             <NewContact />

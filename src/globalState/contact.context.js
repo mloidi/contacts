@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 
 import { ContactService } from '../service/contact.service';
 
@@ -6,14 +6,6 @@ export const ContactContext = createContext();
 
 export const ContactProvider = ({ children }) => {
   const [contacts, setContacts] = useState();
-
-  useEffect(() => {
-    if (!contacts) {
-      ContactService.get().then(response => {
-        setContacts(response);
-      });
-    }
-  }, [contacts]);
 
   const [showNewContact, setShowNewContact] = useState(false);
   const [showViewContact, setShowViewContact] = useState(false);
@@ -29,7 +21,9 @@ export const ContactProvider = ({ children }) => {
 
   const load = () => {
     ContactService.get().then(response => {
-      setContacts(response);
+      if (response) {
+        setContacts(response);
+      }
     });
   };
 

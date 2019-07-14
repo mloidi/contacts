@@ -17,7 +17,6 @@ export const ContactService = {
       const response = await fetch(req);
       return await response.json();
     } else {
-      console.log('no token');
       return null;
     }
   },

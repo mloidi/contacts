@@ -66,9 +66,11 @@ const Login = () => {
         <div>
           <button
             className="App-button"
-            onClick={() => {
-              logIn(username, password);
-              load();
+            onClick={async () => {
+              const logged = await logIn(username, password);
+              if (logged) {
+                load();
+              }
             }}
             disabled={!(username && password)}
           >

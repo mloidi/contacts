@@ -4,5 +4,6 @@ export const cookieName =
 export const getToken = () => {
   const authToken = localStorage.getItem(cookieName);
   if (typeof authToken === 'string' && authToken === 'null') return null;
+  console.log(authToken)
   return authToken;
 };

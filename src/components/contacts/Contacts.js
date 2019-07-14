@@ -11,12 +11,14 @@ const Contacts = () => {
   const { getText } = useContext(LanguageContext);
   const {
     contacts,
+    load,
     showNewContact,
     setShowNewContact,
     showViewContact,
     showEditContact
   } = useContext(ContactContext);
-
+  // load();
+  // console.log(contacts);
   return (
     <React.Fragment>
       {showNewContact ? (
@@ -38,13 +40,13 @@ const Contacts = () => {
             </button>
           </div>
           <div className="App-contact">
-            {contacts &&
+            {/* {contacts &&
               contacts.map(contact => (
                 <ContactCard
                   key={contact._id ? contact._id : contact.id}
                   contact={contact}
                 />
-              ))}
+              ))} */}
           </div>
         </React.Fragment>
       )}

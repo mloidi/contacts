@@ -13,7 +13,7 @@ import NewContact from './NewContact';
 import ViewContact from './ViewContact';
 
 const Contacts = () => {
-  const { isAuthenticated, user } = useContext(AuthContext);
+  const { isAuthenticated } = useContext(AuthContext);
   const { setLoading } = useContext(LoadingContext);
   const { getText } = useContext(LanguageContext);
   const {

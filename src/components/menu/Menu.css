@@ -106,3 +106,8 @@
 .App-menu-button:focus {
   border: 0.1rem solid var(--main-txt-color);
 }
+
+.App-menu-firstName {
+  color: var(--main-txt-color);
+  padding-left: 0.5rem;
+}

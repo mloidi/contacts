@@ -4,7 +4,8 @@ import './Login.css';
 import {
   AuthContext,
   LanguageContext,
-  ContactContext
+  ContactContext,
+  LoadingContext
 } from '../../globalState';
 import Icon from '../common/Icon';
 
@@ -12,6 +13,7 @@ const Login = () => {
   const { logIn, isUsernameValid, isPasswordValid, message } = useContext(
     AuthContext
   );
+  const { setLoading } = useContext(LoadingContext);
   const { load } = useContext(ContactContext);
   const { getText } = useContext(LanguageContext);
   const [username, setUsername] = useState('');
@@ -67,9 +69,11 @@ const Login = () => {
           <button
             className="App-button"
             onClick={async () => {
+              setLoading(true);
               const logged = await logIn(username, password);
               if (logged) {
                 load();
+                setLoading(false);
               }
             }}
             disabled={!(username && password)}

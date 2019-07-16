@@ -82,16 +82,19 @@ const Menu = () => {
             </div>
           ))}
         <img className="App-menu-avatar" src={user.image} alt={user.userName} />
-        <button
-          className="App-menu-button"
-          onClick={() => {
-            logOut();
-            setContacts();
-          }}
-        >
-          <Icon icon="faSignOutAlt" />
-          {' ' + getText('logout')}
-        </button>
+        <div>
+          <div className="App-menu-firstName">{user.firstName}</div>
+          <button
+            className="App-menu-button"
+            onClick={() => {
+              logOut();
+              setContacts();
+            }}
+          >
+            <Icon icon="faSignOutAlt" />
+            {' ' + getText('logout')}
+          </button>
+        </div>
       </div>
     </div>
   );

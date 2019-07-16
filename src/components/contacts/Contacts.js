@@ -4,7 +4,8 @@ import './Contacts.css';
 import {
   AuthContext,
   LanguageContext,
-  ContactContext
+  ContactContext,
+  LoadingContext
 } from '../../globalState';
 import ContactCard from './ContactCard';
 import Icon from '../common/Icon';
@@ -13,6 +14,7 @@ import ViewContact from './ViewContact';
 
 const Contacts = () => {
   const { isAuthenticated, user } = useContext(AuthContext);
+  const { setLoading } = useContext(LoadingContext);
   const { getText } = useContext(LanguageContext);
   const {
     contacts,
@@ -23,7 +25,9 @@ const Contacts = () => {
     showEditContact
   } = useContext(ContactContext);
   if (isAuthenticated() && !contacts) {
+    setLoading(true);
     load();
+    setLoading(false);
   }
   return (
     <React.Fragment>
@@ -46,7 +50,6 @@ const Contacts = () => {
                 >
                   <Icon icon="faUserPlus" /> {' ' + getText('new')}
                 </button>
-                <span>{user.firstName}</span>
               </div>
               <div className="App-contact">
                 {contacts &&
@@ -61,7 +64,7 @@ const Contacts = () => {
           )}
         </React.Fragment>
       ) : (
-        <div>Problem with the token</div>
+        <div>Something goes wrong!!</div>
       )}
     </React.Fragment>
   );

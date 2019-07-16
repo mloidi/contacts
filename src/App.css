@@ -158,3 +158,20 @@
   color: darkred !important;
   border: 0.1rem solid darkred;
 }
+
+.App-loading {
+  width: 0%;
+  height: 1rem;
+  background-color: var(--main-txt-color);
+  animation-timing-function: linear;
+  animation: loading-animation 4s infinite;
+}
+
+@keyframes loading-animation {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}

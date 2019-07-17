@@ -70,6 +70,13 @@
   border: 0.1rem solid var(--main-txt-color);
 }
 
+.App-button:disabled {
+  color: var(--main-bg-color);
+  background-color: transparent;
+  border: 0.1rem solid var(--main-bg-color);
+  cursor: default;
+}
+
 .App-input-text {
   border: none;
   border-bottom: 0.1rem dashed var(--main-bg-color);

@@ -13,7 +13,7 @@ const Login = () => {
   const { logIn, isUsernameValid, isPasswordValid, message } = useContext(
     AuthContext
   );
-  const { setLoading } = useContext(LoadingContext);
+  const { loading, setLoading } = useContext(LoadingContext);
   const { load } = useContext(ContactContext);
   const { getText } = useContext(LanguageContext);
   const [username, setUsername] = useState('');
@@ -48,6 +48,7 @@ const Login = () => {
             placeholder={getText('userName')}
             value={username}
             onChange={handleInputChange}
+            disabled={loading}
           />
         </div>
         <div className="App-form-field ">
@@ -63,6 +64,7 @@ const Login = () => {
             placeholder={getText('password')}
             value={password}
             onChange={handleInputChange}
+            disabled={loading}
           />
         </div>
         <div>
@@ -70,13 +72,18 @@ const Login = () => {
             className="App-button"
             onClick={async () => {
               setLoading(true);
-              const logged = await logIn(username, password);
-              if (logged) {
-                load();
+              try {
+                const logged = await logIn(username, password);
+                if (logged) {
+                  load();
+                  setLoading(false);
+                }
+              } catch (error) {
+                console.error(error);
                 setLoading(false);
               }
             }}
-            disabled={!(username && password)}
+            disabled={!(username && password) || loading}
           >
             <Icon icon="faSignInAlt" /> {' ' + getText('login')}
           </button>

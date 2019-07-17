@@ -60,6 +60,7 @@ export function AuthProvider({ children }) {
         setIsUsernameValid(true);
         setIsPasswordValid(false);
       }
+      throw new Error(error.message);
     }
     return false;
   };

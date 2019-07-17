@@ -7,12 +7,16 @@
 }
 
 .App-menu-logo {
+  /* font-family: 'Bungee Outline', cursive; */
+  font-family: 'Londrina Shadow', cursive;
   display: inline-grid;
   grid-template-columns: auto;
   justify-content: start;
   text-transform: uppercase;
-  color: white;
-  font-size: 2rem;
+  color: var(--main-txt-color);
+  font-size: 3rem;
+  padding: 0;
+  margin: 0;
 }
 
 .App-menu-nav-bar {
@@ -41,7 +45,7 @@
 }
 
 .App-menu-link:hover,
-:focus {
+.App-menu-link:focus {
   outline: none;
   color: var(--main-txt-color);
   background-color: var(--main-bg-color);

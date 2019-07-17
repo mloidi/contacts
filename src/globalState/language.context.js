@@ -48,6 +48,13 @@ export const LanguageProvider = ({ children }) => {
       values: [{ lang: 'es', value: 'Salir' }, { lang: 'en', value: 'Log Out' }]
     },
     {
+      id: 'contactsLogo',
+      values: [
+        { lang: 'es', value: 'contactos' },
+        { lang: 'en', value: "contact's" }
+      ]
+    },
+    {
       id: 'contacts',
       values: [
         { lang: 'es', value: 'contactos' },
@@ -205,11 +212,8 @@ export const LanguageProvider = ({ children }) => {
     },
     {
       id: 'back',
-      values: [
-        { lang: 'es', value: 'volver' },
-        { lang: 'en', value: 'back' }
-      ]
-    },
+      values: [{ lang: 'es', value: 'volver' }, { lang: 'en', value: 'back' }]
+    }
   ]);
 
   const getText = id => {
@@ -225,12 +229,19 @@ export const LanguageProvider = ({ children }) => {
     return value.value;
   };
 
+  const getSelectedLanguage = () => {
+    return languageOption.find(item => {
+      return item.selected;
+    }).id;
+  };
+
   return (
     <LanguageContext.Provider
       value={{
         languageOption,
         setLanguageOption,
-        getText
+        getText,
+        getSelectedLanguage
       }}
     >
       {children}

@@ -12,9 +12,12 @@ import Icon from '../common/Icon';
 const Menu = () => {
   const { logOut, user } = useContext(AuthContext);
   const { setContacts } = useContext(ContactContext);
-  const { languageOption, setLanguageOption, getText } = useContext(
-    LanguageContext
-  );
+  const {
+    languageOption,
+    setLanguageOption,
+    getText,
+    getSelectedLanguage
+  } = useContext(LanguageContext);
   const menu = [
     { icon: 'faUsers', name: 'contacts', path: '/', role: ['USER1'] },
     { icon: 'faCogs', name: 'admin', path: '/admin', role: ['ADMIN'] }
@@ -34,9 +37,17 @@ const Menu = () => {
       return false;
     }
   };
+
+  const getLogo = () => {
+    if (getSelectedLanguage() === 'es') {
+      return getText('contactsLogo') + ' de ' + user.firstName;
+    } else {
+      return user.firstName + '  ' + getText('contactsLogo');
+    }
+  };
   return (
     <div className="App-menu">
-      <div className="App-menu-logo ">ML Contacts</div>
+      <div className="App-menu-logo ">{getLogo()}</div>
       <div className="App-menu-nav-bar">
         <ul className="App-menu-nav-bar-ul">
           {menu.map(menu => (
@@ -82,19 +93,16 @@ const Menu = () => {
             </div>
           ))}
         <img className="App-menu-avatar" src={user.image} alt={user.userName} />
-        <div>
-          <div className="App-menu-firstName">{user.firstName}</div>
-          <button
-            className="App-menu-button"
-            onClick={() => {
-              logOut();
-              setContacts();
-            }}
-          >
-            <Icon icon="faSignOutAlt" />
-            {' ' + getText('logout')}
-          </button>
-        </div>
+        <button
+          className="App-menu-button"
+          onClick={() => {
+            logOut();
+            setContacts();
+          }}
+        >
+          <Icon icon="faSignOutAlt" />
+          {' ' + getText('logout')}
+        </button>
       </div>
     </div>
   );

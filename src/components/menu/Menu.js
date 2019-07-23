@@ -11,7 +11,7 @@ import Icon from '../common/Icon';
 
 const Menu = () => {
   const { logOut, user } = useContext(AuthContext);
-  const { setContacts } = useContext(ContactContext);
+  const { setContacts, setAllContacts } = useContext(ContactContext);
   const {
     languageOption,
     setLanguageOption,
@@ -98,6 +98,7 @@ const Menu = () => {
           onClick={() => {
             logOut();
             setContacts();
+            setAllContacts();
           }}
         >
           <Icon icon="faSignOutAlt" />

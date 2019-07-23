@@ -5,12 +5,14 @@ import {
   AuthContext,
   LanguageContext,
   ContactContext,
-  LoadingContext
+  LoadingContext,
+  GroupContext
 } from '../../globalState';
 import ContactCard from './ContactCard';
 import Icon from '../common/Icon';
 import NewContact from './NewContact';
 import ViewContact from './ViewContact';
+import Groups from '../groups/Groups';
 
 const Contacts = () => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -18,15 +20,18 @@ const Contacts = () => {
   const { getText } = useContext(LanguageContext);
   const {
     contacts,
-    load,
+    loadContacts,
     showNewContact,
     setShowNewContact,
     showViewContact,
     showEditContact
   } = useContext(ContactContext);
+  const { loadGroups, selectedGroup } = useContext(GroupContext);
+
   if (isAuthenticated() && !contacts) {
     setLoading(true);
-    load();
+    loadContacts();
+    loadGroups();
     setLoading(false);
   }
   return (
@@ -40,27 +45,39 @@ const Contacts = () => {
           ) : showEditContact ? (
             <NewContact />
           ) : (
-            <React.Fragment>
-              <div className="App-contact-options">
-                <button
-                  className="App-contact-button"
-                  onClick={() => {
-                    setShowNewContact(true);
-                  }}
-                >
-                  <Icon icon="faUserPlus" /> {' ' + getText('new')}
-                </button>
+            <div className="App-contact-layout">
+              <div className="App-contact-groups">
+                <Groups />
               </div>
-              <div className="App-contact">
-                {contacts &&
-                  contacts.map(contact => (
-                    <ContactCard
-                      key={contact._id ? contact._id : contact.id}
-                      contact={contact}
-                    />
-                  ))}
+              <div>
+                <div className="App-contact-options">
+                  {selectedGroup ? (
+                    <div className="App-contacts-title">
+                      {selectedGroup.name} contacts
+                    </div>
+                  ) : (
+                    <div className="App-contacts-title">All contacts</div>
+                  )}
+                  <button
+                    className="App-contact-button"
+                    onClick={() => {
+                      setShowNewContact(true);
+                    }}
+                  >
+                    <Icon icon="faUserPlus" /> {' ' + getText('new')}
+                  </button>
+                </div>
+                <div className="App-contact">
+                  {contacts &&
+                    contacts.map(contact => (
+                      <ContactCard
+                        key={contact._id ? contact._id : contact.id}
+                        contact={contact}
+                      />
+                    ))}
+                </div>
               </div>
-            </React.Fragment>
+            </div>
           )}
         </React.Fragment>
       ) : (

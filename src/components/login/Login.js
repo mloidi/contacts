@@ -5,7 +5,8 @@ import {
   AuthContext,
   LanguageContext,
   ContactContext,
-  LoadingContext
+  LoadingContext,
+  GroupContext
 } from '../../globalState';
 import Icon from '../common/Icon';
 
@@ -14,7 +15,8 @@ const Login = () => {
     AuthContext
   );
   const { loading, setLoading } = useContext(LoadingContext);
-  const { load } = useContext(ContactContext);
+  const { loadContacts } = useContext(ContactContext);
+  const { loadGroups, setSelectedGroup } = useContext(GroupContext);
   const { getText } = useContext(LanguageContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -75,7 +77,9 @@ const Login = () => {
               try {
                 const logged = await logIn(username, password);
                 if (logged) {
-                  load();
+                  loadContacts();
+                  loadGroups();
+                  setSelectedGroup(null);
                   setLoading(false);
                 }
               } catch (error) {

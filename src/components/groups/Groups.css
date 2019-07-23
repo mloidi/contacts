@@ -1,0 +1,71 @@
+.App-groups {
+  margin-top: 1rem;
+}
+
+.App-groups-title {
+  color: var(--main-txt-color);
+  font-size: 1.5rem;
+}
+
+.App-group {
+  margin-top: 1rem;
+  margin-right: 1rem;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  border: 0.1rem solid var(--main-txt-color);
+  border-radius: 1rem;
+  cursor: pointer;
+  color: var(--main-txt-color);
+}
+
+.App-group:hover {
+  background-color: var(--main-txt-color);
+  border: 0.1rem solid var(--main-txt-color);
+  color: var(--main-bg-color);
+  font-weight: bold;
+}
+
+.App-group-name {
+  padding: 0.5rem;
+}
+
+.App-group-contacts {
+  background-color: var(--main-bg-color);
+  border-radius: 1rem;
+  text-align: center;
+  padding: 0.5rem;
+  font-weight: bold;
+  color: var(--main-txt-color);
+}
+
+.App-group-selected {
+  background-color: var(--main-txt-color);
+  border: 0.1rem solid var(--main-txt-color);
+  color: var(--main-bg-color);
+  font-weight: bold;
+}
+
+.App-group-new {
+  display: grid;
+  grid-template-columns: 75% auto;
+  grid-gap: 0.5rem;
+}
+
+
+
+.App-group-button {
+  font-size: 1rem;
+  color: var(--main-bg-color);
+  background-color: transparent;
+  cursor: pointer;
+  border: 0.1rem solid var(--main-bg-color);
+  padding: 0.5rem;
+  transition: color 0.5s, background-color 0.5s;
+}
+
+.App-group-button:hover,
+.App-group-button:focus {
+  color: var(--main-bg-color);
+  background-color: var(--main-txt-color);
+  border: 0.1rem solid var(--main-txt-color);
+}

@@ -5,7 +5,8 @@ import {
   LanguageProvider,
   AlertProvider,
   ContactProvider,
-  LoadingProvider
+  LoadingProvider,
+  GroupProvider
 } from '.';
 
 function ProviderComposer({ context, children }) {
@@ -23,7 +24,8 @@ function ContextProvider({ children }) {
         <LanguageProvider />,
         <AlertProvider />,
         <ContactProvider />,
-        <LoadingProvider />
+        <LoadingProvider />,
+        <GroupProvider />
       ]}
     >
       {children}

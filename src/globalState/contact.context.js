@@ -6,6 +6,7 @@ export const ContactContext = createContext();
 
 export const ContactProvider = ({ children }) => {
   const [contacts, setContacts] = useState();
+  const [allContacts, setAllContacts] = useState();
 
   const [showNewContact, setShowNewContact] = useState(false);
   const [showViewContact, setShowViewContact] = useState(false);
@@ -19,12 +20,9 @@ export const ContactProvider = ({ children }) => {
     });
   };
 
-  const load = () => {
-    ContactService.get().then(response => {
-      if (response) {
-        setContacts(response);
-      }
-    });
+  const loadContacts = async () => {
+    setAllContacts(await ContactService.get());
+    setContacts(allContacts);
   };
 
   const add = async contactToAdd => {
@@ -70,12 +68,20 @@ export const ContactProvider = ({ children }) => {
     setShowViewContact(false);
   };
 
+  const filterContacts = contactsToShow => {
+    if (contactsToShow) {
+      setContacts(contactsToShow);
+    } else {
+      setContacts(allContacts);
+    }
+  };
+
   return (
     <ContactContext.Provider
       value={{
         contacts,
         setContacts,
-        load,
+        loadContacts,
         contact,
         getById,
         add,
@@ -87,7 +93,8 @@ export const ContactProvider = ({ children }) => {
         edit,
         showEditContact,
         editContact,
-        backEditContact
+        backEditContact,
+        filterContacts
       }}
     >
       {children}

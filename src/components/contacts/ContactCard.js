@@ -1,15 +1,44 @@
 import React, { useContext } from 'react';
 
-import { LanguageContext, ContactContext } from '../../globalState';
+import {
+  LanguageContext,
+  ContactContext,
+  GroupContext
+} from '../../globalState';
 import Icon from '../common/Icon';
 
 const ContactCard = ({ contact }) => {
   const { getText } = useContext(LanguageContext);
-  const { viewContact, editContact } = useContext(ContactContext);
+  const { viewContact, editContact, filterContacts } = useContext(
+    ContactContext
+  );
+  const { selectedGroup, deleteContact } = useContext(GroupContext);
+
+  const drag = event => {
+    event.dataTransfer.setData('text', event.target.id);
+  };
 
   return (
-    <div className="App-contact-card">
+    <div
+      className="App-contact-card"
+      id={contact._id}
+      draggable="true"
+      onDragStart={drag}
+    >
       <div>
+        {selectedGroup && (
+          <div className="App-contact-group-delete">
+            <button
+              className="App-contact-group-delete-button"
+              onClick={async () => {
+                const selectedGroupUpdated = await deleteContact(selectedGroup.name, contact._id);
+                filterContacts(selectedGroupUpdated.contacts);
+              }}
+            >
+              <Icon icon="faTrash" />
+            </button>
+          </div>
+        )}
         {contact.avatar ? (
           <img
             className="App-contact-card-avatar"
@@ -30,10 +59,11 @@ const ContactCard = ({ contact }) => {
             className="App-contact-card-email"
             href={'mailto:' + contact.emails[0].email}
             target="_top"
+            draggable="false"
           >
             <Icon icon="faEnvelope" /> {contact.emails[0].email}
           </a>
-          {' - '}
+          <br />
           <Icon icon="faPhone" /> {contact.phones[0].phoneNumber}
         </div>
       </div>

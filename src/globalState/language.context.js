@@ -213,6 +213,20 @@ export const LanguageProvider = ({ children }) => {
     {
       id: 'back',
       values: [{ lang: 'es', value: 'volver' }, { lang: 'en', value: 'back' }]
+    },
+    {
+      id: 'myGroups',
+      values: [
+        { lang: 'es', value: 'Mis grupos' },
+        { lang: 'en', value: 'My Groups' }
+      ]
+    },
+    {
+      id: 'newGroup',
+      values: [
+        { lang: 'es', value: 'Nuevo grupo' },
+        { lang: 'en', value: 'New group' }
+      ]
     }
   ]);
 

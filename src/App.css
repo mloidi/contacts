@@ -13,6 +13,25 @@
   --main-alert-error-border-color: darkred;
 }
 
+body {
+  margin: 0;
+  font-family: 'Noto Sans HK', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/*
+* Functional CSS
+TODO Refactor to functional CSS
+*/
+
+
+
+/*
+* APP CSS
+*/
+
 .App {
   text-align: center;
   color: white;
@@ -91,6 +110,7 @@
 
 .App-input-text:hover,
 .App-input-text:focus {
+  outline: none;
   border: none;
   color: var(--main-bg-color);
   border-bottom: 0.1rem dashed var(--main-txt-color);

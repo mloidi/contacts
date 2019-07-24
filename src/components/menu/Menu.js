@@ -5,19 +5,22 @@ import './Menu.css';
 import {
   AuthContext,
   LanguageContext,
-  ContactContext
+  ContactContext,
+  LoadingContext
 } from '../../globalState';
 import Icon from '../common/Icon';
 
 const Menu = () => {
   const { logOut, user } = useContext(AuthContext);
-  const { unloadContacts, contacts } = useContext(ContactContext);
+  const { unloadContacts } = useContext(ContactContext);
   const {
     languageOption,
     setLanguageOption,
     getText,
     getSelectedLanguage
   } = useContext(LanguageContext);
+  const {  setLoading } = useContext(LoadingContext);
+
   const menu = [
     { icon: 'faUsers', name: 'contacts', path: '/', role: ['USER1'] },
     { icon: 'faCogs', name: 'admin', path: '/admin', role: ['ADMIN'] }
@@ -96,14 +99,12 @@ const Menu = () => {
         <button
           className="App-menu-button"
           onClick={async () => {
-            console.log('1',contacts)
+            setLoading(true);
             const logout = await logOut();
-            console.log('2',contacts)
             if (logout) {
-              console.log('3',contacts)
               await unloadContacts();
-              console.log('4',contacts)
             }
+            setLoading(false);
           }}
         >
           <Icon icon="faSignOutAlt" />

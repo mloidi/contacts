@@ -13,10 +13,11 @@ import Icon from '../common/Icon';
 import NewContact from './NewContact';
 import ViewContact from './ViewContact';
 import Groups from '../groups/Groups';
+import Loading from '../common/Loading';
 
 const Contacts = () => {
   const { isAuthenticated } = useContext(AuthContext);
-  const { setLoading } = useContext(LoadingContext);
+  const { loading, setLoading } = useContext(LoadingContext);
   const { getText } = useContext(LanguageContext);
   const {
     contacts,
@@ -36,7 +37,7 @@ const Contacts = () => {
   }
   return (
     <React.Fragment>
-      {isAuthenticated() ? (
+      {isAuthenticated() && !loading ? (
         <React.Fragment>
           {showNewContact ? (
             <NewContact />
@@ -81,7 +82,7 @@ const Contacts = () => {
           )}
         </React.Fragment>
       ) : (
-        <div>Something goes wrong!!</div>
+        <Loading />
       )}
     </React.Fragment>
   );

@@ -11,7 +11,7 @@ import Icon from '../common/Icon';
 
 const Menu = () => {
   const { logOut, user } = useContext(AuthContext);
-  const { setContacts, setAllContacts } = useContext(ContactContext);
+  const { unloadContacts, contacts } = useContext(ContactContext);
   const {
     languageOption,
     setLanguageOption,
@@ -95,10 +95,15 @@ const Menu = () => {
         <img className="App-menu-avatar" src={user.image} alt={user.userName} />
         <button
           className="App-menu-button"
-          onClick={() => {
-            logOut();
-            setContacts();
-            setAllContacts();
+          onClick={async () => {
+            console.log('1',contacts)
+            const logout = await logOut();
+            console.log('2',contacts)
+            if (logout) {
+              console.log('3',contacts)
+              await unloadContacts();
+              console.log('4',contacts)
+            }
           }}
         >
           <Icon icon="faSignOutAlt" />

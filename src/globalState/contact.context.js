@@ -25,6 +25,18 @@ export const ContactProvider = ({ children }) => {
     setContacts(allContacts);
   };
 
+  const unloadContacts = async () => {
+    return new Promise((resolve, reject) => {
+      setAllContacts(null);
+      setContacts(null);
+      setShowNewContact(false);
+      setShowViewContact(false);
+      setShowEditContact(false);
+      setContact(null);
+      resolve(true);
+    });
+  };
+
   const add = async contactToAdd => {
     const contactsCopy = [...contacts];
     contactToAdd.id = contactsCopy.length + 1;
@@ -94,7 +106,8 @@ export const ContactProvider = ({ children }) => {
         showEditContact,
         editContact,
         backEditContact,
-        filterContacts
+        filterContacts,
+        unloadContacts
       }}
     >
       {children}

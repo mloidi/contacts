@@ -32,10 +32,13 @@ export function AuthProvider({ children }) {
   };
 
   const logOut = () => {
-    //  TODO call logout service
-    localStorage.removeItem(cookieName);
-    setToken();
-    setUser();
+    return new Promise((resolve, reject) => {
+      //  TODO call logout service
+      localStorage.removeItem(cookieName);
+      setToken();
+      setUser();
+      resolve(true);
+    });
   };
 
   const logIn = async (username, password) => {

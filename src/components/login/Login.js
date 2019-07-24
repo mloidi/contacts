@@ -15,11 +15,12 @@ const Login = () => {
     AuthContext
   );
   const { loading, setLoading } = useContext(LoadingContext);
-  const { loadContacts } = useContext(ContactContext);
+  const { loadContacts, contacts } = useContext(ContactContext);
   const { loadGroups, setSelectedGroup } = useContext(GroupContext);
   const { getText } = useContext(LanguageContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  console.log('login 1', contacts);
 
   const handleInputChange = event => {
     const target = event.target;
@@ -75,17 +76,20 @@ const Login = () => {
             onClick={async () => {
               setLoading(true);
               try {
+                console.log('login 2', contacts);
                 const logged = await logIn(username, password);
                 if (logged) {
                   loadContacts();
+                  console.log('login 3', contacts);
                   loadGroups();
+                  console.log('login 4', contacts);
                   setSelectedGroup(null);
-                  setLoading(false);
+                  console.log('login 5', contacts);
                 }
               } catch (error) {
                 console.error(error);
-                setLoading(false);
               }
+              setLoading(false);
             }}
             disabled={!(username && password) || loading}
           >

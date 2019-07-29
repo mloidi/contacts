@@ -54,6 +54,14 @@ export const GroupProvider = ({ children }) => {
     return selectedGroupUpdated;
   };
 
+  const unloadGroups = async () => {
+    return new Promise((resolve, reject) => {
+      setGroups(null);
+      setSelectedGroup(null);
+      resolve(true);
+    });
+  };
+
   return (
     <GroupContext.Provider
       value={{
@@ -63,7 +71,8 @@ export const GroupProvider = ({ children }) => {
         loadGroups,
         addContact,
         deleteContact,
-        add
+        add,
+        unloadGroups
       }}
     >
       {children}

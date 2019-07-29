@@ -6,6 +6,7 @@ import {
   AuthContext,
   LanguageContext,
   ContactContext,
+  GroupContext,
   LoadingContext
 } from '../../globalState';
 import Icon from '../common/Icon';
@@ -13,13 +14,14 @@ import Icon from '../common/Icon';
 const Menu = () => {
   const { logOut, user } = useContext(AuthContext);
   const { unloadContacts } = useContext(ContactContext);
+  const { unloadGroups } = useContext(GroupContext);
   const {
     languageOption,
     setLanguageOption,
     getText,
     getSelectedLanguage
   } = useContext(LanguageContext);
-  const {  setLoading } = useContext(LoadingContext);
+  const { setLoading } = useContext(LoadingContext);
 
   const menu = [
     { icon: 'faUsers', name: 'contacts', path: '/', role: ['USER1'] },
@@ -103,6 +105,7 @@ const Menu = () => {
             const logout = await logOut();
             if (logout) {
               await unloadContacts();
+              await unloadGroups();
             }
             setLoading(false);
           }}

@@ -62,6 +62,13 @@ export const LanguageProvider = ({ children }) => {
       ]
     },
     {
+      id: 'allContacts',
+      values: [
+        { lang: 'es', value: 'Todos los contactos' },
+        { lang: 'en', value: 'All contacts' }
+      ]
+    },
+    {
       id: 'admin',
       values: [
         { lang: 'es', value: 'administrar' },
@@ -226,6 +233,27 @@ export const LanguageProvider = ({ children }) => {
       values: [
         { lang: 'es', value: 'Nuevo grupo' },
         { lang: 'en', value: 'New group' }
+      ]
+    },
+    {
+      id: 'editGroup',
+      values: [
+        { lang: 'es', value: 'Editar grupo' },
+        { lang: 'en', value: 'Edit group' }
+      ]
+    },
+    {
+      id: 'removeGroup',
+      values: [
+        { lang: 'es', value: 'Borrar grupo' },
+        { lang: 'en', value: 'Remove grupo' }
+      ]
+    },
+    {
+      id: 'saveGroup',
+      values: [
+        { lang: 'es', value: 'Guardar grupo' },
+        { lang: 'en', value: 'Save group' }
       ]
     }
   ]);

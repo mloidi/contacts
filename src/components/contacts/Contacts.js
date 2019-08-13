@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import './Contacts.css';
 import {
@@ -27,7 +27,11 @@ const Contacts = () => {
     showViewContact,
     showEditContact
   } = useContext(ContactContext);
-  const { loadGroups, selectedGroup } = useContext(GroupContext);
+  const { loadGroups, selectedGroup, setSelectedGroup, remove } = useContext(
+    GroupContext
+  );
+
+  const [editGroup, setEditGroup] = useState(false);
 
   if (isAuthenticated() && !contacts) {
     setLoading(true);
@@ -53,20 +57,54 @@ const Contacts = () => {
               <div>
                 <div className="App-contact-options">
                   {selectedGroup ? (
-                    <div className="App-contacts-title">
-                      {selectedGroup.name} contacts
+                    <div className="App-contacts-group-title">
+                      <div className="App-contacts-title">
+                        {selectedGroup.name} {' ' + getText('contacts')}
+                      </div>
+                      {editGroup ? (
+                        <button
+                          className="App-contact-button"
+                          onClick={() => {
+                            setEditGroup(!editGroup);
+                          }}
+                        >
+                          <Icon icon="faSave" /> {' ' + getText('editGroup')}
+                        </button>
+                      ) : (
+                        <button
+                          className="App-contact-button"
+                          onClick={() => {
+                            setEditGroup(!editGroup);
+                          }}
+                        >
+                          <Icon icon="faEdit" /> {' ' + getText('editGroup')}
+                        </button>
+                      )}
+                      <button
+                        className="App-contact-button"
+                        onClick={() => {
+                          remove(selectedGroup._id);
+                          loadContacts();
+                          setSelectedGroup(null);
+                        }}
+                      >
+                        <Icon icon="faTrash" /> {' ' + getText('removeGroup')}
+                      </button>
                     </div>
                   ) : (
-                    <div className="App-contacts-title">All contacts</div>
+                    <div className="App-contacts-title">{getText('allContacts')}</div>
                   )}
-                  <button
-                    className="App-contact-button"
-                    onClick={() => {
-                      setShowNewContact(true);
-                    }}
-                  >
-                    <Icon icon="faUserPlus" /> {' ' + getText('new')}
-                  </button>
+                  <div>
+                    {selectedGroup && <div className="App-contacts-title" />}
+                    <button
+                      className="App-contact-button"
+                      onClick={() => {
+                        setShowNewContact(true);
+                      }}
+                    >
+                      <Icon icon="faUserPlus" /> {' ' + getText('new')}
+                    </button>
+                  </div>
                 </div>
                 <div className="App-contact">
                   {contacts &&

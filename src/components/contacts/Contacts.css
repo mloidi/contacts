@@ -12,6 +12,13 @@
   font-size: 1.5rem;
 }
 
+.App-contacts-group-title {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: start;
+  grid-gap: 1rem;
+}
+
 .App-contact-groups {
   border-right: 0.1rem solid rgba(0, 0, 0, 0.2);
 }

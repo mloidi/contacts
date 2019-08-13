@@ -48,7 +48,7 @@ export const GroupProvider = ({ children }) => {
     group.contacts = group.contacts.filter(contact => {
       return contact._id !== contactId;
     });
-    const selectedGroupUpdated = await save(group, false)
+    const selectedGroupUpdated = await save(group, false);
     setSelectedGroup(selectedGroupUpdated);
     loadGroups();
     return selectedGroupUpdated;
@@ -62,6 +62,20 @@ export const GroupProvider = ({ children }) => {
     });
   };
 
+  const edit = groupName => {
+    const newGroup = { name: groupName, contacts: [] };
+    const groupsCopy = [...groups];
+    groupsCopy.push(newGroup);
+    save(newGroup, false);
+    loadGroups();
+  };
+
+  const remove = async groupId => {
+    console.log(groupId);
+    await GroupService.delete(groupId);
+    loadGroups();
+  };
+
   return (
     <GroupContext.Provider
       value={{
@@ -72,6 +86,8 @@ export const GroupProvider = ({ children }) => {
         addContact,
         deleteContact,
         add,
+        edit,
+        remove,
         unloadGroups
       }}
     >

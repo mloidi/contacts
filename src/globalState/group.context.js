@@ -26,6 +26,7 @@ export const GroupProvider = ({ children }) => {
   };
 
   const addContact = async (groupName, contactId) => {
+    console.log(groupName, contactId);
     const groupsCopy = [...groups];
     const group = groupsCopy.find(group => {
       return group.name === groupName;

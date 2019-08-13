@@ -39,9 +39,8 @@ export const ContactProvider = ({ children }) => {
 
   const add = async contactToAdd => {
     const contactsCopy = [...contacts];
-    contactToAdd.id = contactsCopy.length + 1;
-    contactsCopy.push(contactToAdd);
-    await ContactService.save(contactToAdd, true);
+    const contactAdded = await ContactService.save(contactToAdd, true);
+    contactsCopy.push(contactAdded);
     setContacts(contactsCopy);
     setShowNewContact(false);
   };

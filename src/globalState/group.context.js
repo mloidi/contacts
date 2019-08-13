@@ -62,11 +62,14 @@ export const GroupProvider = ({ children }) => {
     });
   };
 
-  const edit = groupName => {
-    const newGroup = { name: groupName, contacts: [] };
+  const edit = async (groupId, groupName) => {
     const groupsCopy = [...groups];
-    groupsCopy.push(newGroup);
-    save(newGroup, false);
+    const group = groupsCopy.find(group => {
+      return group._id === groupId;
+    });
+    group.name = groupName;
+    const selectedGroupUpdated = await save(group, false);
+    setSelectedGroup(selectedGroupUpdated);
     loadGroups();
   };
 

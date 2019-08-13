@@ -27,11 +27,25 @@ const Contacts = () => {
     showViewContact,
     showEditContact
   } = useContext(ContactContext);
-  const { loadGroups, selectedGroup, setSelectedGroup, remove } = useContext(
-    GroupContext
-  );
+  const {
+    loadGroups,
+    selectedGroup,
+    setSelectedGroup,
+    remove,
+    edit
+  } = useContext(GroupContext);
 
   const [editGroup, setEditGroup] = useState(false);
+  const [groupName, setGroupName] = useState('');
+
+  const handleInputChange = event => {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    if (name === 'groupName') {
+      setGroupName(value);
+    }
+  };
 
   if (isAuthenticated() && !contacts) {
     setLoading(true);
@@ -59,16 +73,31 @@ const Contacts = () => {
                   {selectedGroup ? (
                     <div className="App-contacts-group-title">
                       <div className="App-contacts-title">
-                        {selectedGroup.name} {' ' + getText('contacts')}
+                        {editGroup ? (
+                          <input
+                            type="text"
+                            className="App-input-text"
+                            autoFocus
+                            id="groupName"
+                            name="groupName"
+                            value={groupName}
+                            onChange={handleInputChange}
+                          />
+                        ) : (
+                          <div>
+                            {selectedGroup.name} {' ' + getText('contacts')}
+                          </div>
+                        )}
                       </div>
                       {editGroup ? (
                         <button
                           className="App-contact-button"
                           onClick={() => {
+                            edit(selectedGroup._id, groupName);
                             setEditGroup(!editGroup);
                           }}
                         >
-                          <Icon icon="faSave" /> {' ' + getText('editGroup')}
+                          <Icon icon="faSave" /> {' ' + getText('saveGroup')}
                         </button>
                       ) : (
                         <button
@@ -92,7 +121,9 @@ const Contacts = () => {
                       </button>
                     </div>
                   ) : (
-                    <div className="App-contacts-title">{getText('allContacts')}</div>
+                    <div className="App-contacts-title">
+                      {getText('allContacts')}
+                    </div>
                   )}
                   <div>
                     {selectedGroup && <div className="App-contacts-title" />}
